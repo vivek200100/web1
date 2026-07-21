@@ -381,7 +381,7 @@
     drawerTitle.innerHTML = card.dataset.title || 'Publication Title';
     drawerJournal.textContent = card.dataset.journal || '';
     drawerAuthors.textContent = card.dataset.authors || '';
-    drawerBrief.textContent = card.dataset.brief || 'Add your publication summary here later.';
+  drawerBrief.innerHTML = `<div class='prose prose-sm max-w-none'>${card.dataset.brief || 'Add your publication summary here later.'}</div>`;
 
     const doi = card.dataset.doi || '#';
     drawerDoi.setAttribute('href', doi);
