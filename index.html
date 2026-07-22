@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Vivek Vishwakarma | Structural Engineering Researcher</title>
+<meta name="description" content="Portfolio of Vivek Vishwakarma - PhD Candidate, Civil Engineering, IIT Roorkee. Specializing in Acoustic Emission, Corrosion-Fatigue, and Fracture Mechanics of Reinforced Concrete." />
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+  :root{
+    --navy: #0f172a;
+    --slate: #1e293b;
+    --slate-light: #334155;
+    --accent: #b45309;
+    --accent-light: #d97706;
+    --paper: #f8fafc;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--paper);
+    color: var(--slate);
+  }
+  .font-serif-heading { font-family: 'Merriweather', serif; }
+  .fade-in-section {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+  }
+  .fade-in-section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .timeline-item {
+    position: relative;
+    padding-left: 2rem;
+    border-left: 2px solid #cbd5e1;
+  }
+  .timeline-item:last-child { border-left: 2px solid transparent; }
+  .timeline-dot {
+    position: absolute;
+    left: -9px;
+    top: 0;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: var(--accent);
+    border: 3px solid var(--paper);
+    box-shadow: 0 0 0 2px var(--accent);
+  }
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: #e2e8f0; }
+  ::-webkit-scrollbar-thumb { background: var(--slate-light); border-radius: 4px; }
+  .hero-bg {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 55%, #334155 100%);
+  }
+  .pub-card {
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    cursor: pointer;
+  }
+  .pub-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px -8px rgba(15,23,42,0.15);
+    border-color: var(--accent-light);
+  }
+  .nav-link { position: relative; }
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: -4px;
+    width: 0%; height: 2px;
+    background-color: var(--accent-light);
+    transition: width 0.3s ease;
+  }
+  .nav-link:hover::after { width: 100%; }
+  .skill-pill {
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+  .skill-pill:hover {
+    background-color: var(--accent);
+    color: white;
+  }
+  .drawer-backdrop {
+    transition: opacity 0.3s ease;
+  }
+  .drawer-panel {
+    transition: transform 0.35s ease;
+  }
+</style>
+</head>
+<body class="antialiased">
+<nav class="fixed top-0 w-full z-50 bg-[#0f172a]/95 backdrop-blur-sm shadow-lg">
+  <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+    <a href="#hero" class="text-white font-serif-heading text-lg font-bold tracking-wide">VV<span class="text-amber-500">.</span></a>
+    <div class="hidden md:flex space-x-8 text-slate-200 text-sm font-medium uppercase tracking-wider">
+      <a href="#about" class="nav-link hover:text-amber-400">About</a>
+      <a href="#experience" class="nav-link hover:text-amber-400">Experience</a>
+      <a href="#publications" class="nav-link hover:text-amber-400">Publications</a>
+      <a href="#contact" class="nav-link hover:text-amber-400">Contact</a>
+    </div>
+    <button id="menu-btn" class="md:hidden text-white text-2xl focus:outline-none" aria-label="Open menu">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </div>
+  <div id="mobile-menu" class="hidden md:hidden bg-[#0f172a] px-6 pb-4 flex flex-col space-y-3 text-slate-200 text-sm uppercase tracking-wider">
+    <a href="#about" class="hover:text-amber-400">About</a>
+    <a href="#experience" class="hover:text-amber-400">Experience</a>
+    <a href="#publications" class="hover:text-amber-400">Publications</a>
+    <a href="#contact" class="hover:text-amber-400">Contact</a>
+  </div>
+</nav>
+<header id="hero" class="hero-bg min-h-screen flex items-center pt-24 pb-16 px-6 relative overflow-hidden" style="background-image: linear-gradient(rgba(15,23,42,0.72), rgba(15,23,42,0.72)), url('Picture1.jpg'); background-size: 100% auto; background-position: center top; background-repeat: no-repeat;">
+  <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle, #64748b 1px, transparent 1px); background-size: 24px 24px;"></div>
+  <div class="max-w-6xl mx-auto w-full grid md:grid-cols-3 gap-10 items-center relative z-10">
+    <div class="md:col-span-2 text-white">
+      <p class="text-amber-500 font-semibold uppercase tracking-widest text-sm mb-3">PhD Candidate · Civil Engineering, IIT Roorkee</p>
+      <h1 class="font-serif-heading text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">Vivek Vishwakarma</h1>
+      <h2 class="text-xl md:text-2xl text-slate-300 font-light mb-6 leading-relaxed">Decoding structural failure through <span class="text-amber-400 font-medium">Acoustic Emission</span> &amp; <span class="text-amber-400 font-medium">Corrosion-Fatigue</span> research.</h2>
+      <p class="text-slate-300 max-w-2xl mb-8 leading-relaxed">I engineer physics-informed frameworks and signal processing pipelines to diagnose hidden damage in reinforced concrete under coupled corrosion-fatigue loading — bridging experimental testing, MATLAB-based algorithm development, and Q1 journal research to build safer, longer-lasting infrastructure.</p>
+      <div class="flex flex-wrap gap-4">
+        <a href="#publications" class="bg-amber-600 hover:bg-amber-700 text-white font-semibold px-6 py-3 rounded-lg transition shadow-lg"><i class="fa-solid fa-book-open mr-2"></i>View Publications</a>
+        <a href="CV.pdf" download class="bg-amber-600 hover:bg-amber-700 text-white font-semibold px-6 py-3 rounded-lg transition shadow-lg"><i class="fa-solid fa-file-arrow-down mr-2"></i>Download CV</a>
+              <a href="#contact" class="border border-slate-400 hover:border-amber-500 hover:text-amber-400 text-slate-200 font-semibold px-6 py-3 rounded-lg transition"><i class="fa-solid fa-paper-plane mr-2"></i>Get in Touch</a>
+      </div>
+    </div>
+    <div class="flex justify-center md:justify-end">
+      <div class="relative">
+        <div class="w-56 h-56 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-amber-600 shadow-2xl">
+          <img src="Vivek.jpg" alt="Vivek Vishwakarma headshot" class="w-full h-full object-cover" />
+        </div>
+        <div class="absolute -bottom-3 -right-3 bg-slate-900 border border-amber-600 rounded-full px-4 py-2 text-amber-400 text-xs font-semibold shadow-lg"><i class="fa-solid fa-graduation-cap mr-1"></i> Ph.D. (Thesis Submitted)</div>
+      </div>
+    </div>
+  </div>
+  <a href="#about" class="absolute bottom-8 left-1/2 -translate-x-1/2 text-slate-400 animate-bounce"><i class="fa-solid fa-chevron-down text-xl"></i></a>
+</header>
+<section id="about" class="fade-in-section py-24 px-6 bg-white">
+  <div class="max-w-5xl mx-auto">
+    <p class="text-amber-600 font-semibold uppercase tracking-widest text-sm mb-2 text-center">About Me</p>
+    <h2 class="font-serif-heading text-3xl md:text-4xl font-bold text-slate-900 text-center mb-12">From Site Engineer to Structural Researcher</h2>
+    <div class="grid md:grid-cols-3 gap-10">
+      <div class="md:col-span-2 space-y-5 text-slate-700 leading-relaxed text-lg">
+        <p>I am a doctoral candidate (thesis submitted) in the Department of Civil Engineering at the <span class="font-semibold text-slate-900">Indian Institute of Technology Roorkee</span>, where my research centers on the coupled corrosion-fatigue behavior of reinforced concrete — a critical, under-modeled failure mode in aging infrastructure worldwide.</p>
+        <p>My work combines <span class="font-semibold text-slate-900">acoustic emission (AE) monitoring</span>, advanced signal processing (FFT, cepstrum analysis, Gaussian Mixture Models), and physics-informed analytical frameworks to detect and predict structural damage before it becomes catastrophic. I build MATLAB-based pipelines to process large experimental datasets and translate micro-scale flaw evolution into macro-scale structural health metrics.</p>
+        <p>Before returning to research, I spent nearly seven years as an <span class="font-semibold text-slate-900">Assistant Professor</span> teaching structural analysis and RCC design, and worked as a project manager overseeing live construction and structural audits — experience that keeps my research firmly grounded in real-world engineering practice.</p>
+      </div>
+      <div class="bg-slate-50 rounded-xl p-6 border border-slate-200 self-start">
+        <h3 class="font-semibold text-slate-900 mb-4 uppercase text-sm tracking-wide">Core Expertise</h3>
+        <div class="flex flex-wrap gap-2">
+          <span class="skill-pill bg-slate-200 text-slate-800 text-xs font-medium px-3 py-1.5 rounded-full cursor-default">Acoustic Emission</span>
+          <span class="skill-pill bg-slate-200 text-slate-800 text-xs font-medium px-3 py-1.5 rounded-full cursor-default">Corrosion-Fatigue</span>
+          <span class="skill-pill bg-slate-200 text-slate-800 text-xs font-medium px-3 py-1.5 rounded-full cursor-default">Fracture Mechanics</span>
+          <span class="skill-pill bg-slate-200 text-slate-800 text-xs font-medium px-3 py-1.5 rounded-full cursor-default">Signal Processing</span>
+          <span class="skill-pill bg-slate-200 text-slate-800 text-xs font-medium px-3 py-1.5 rounded-full cursor-default">MATLAB</span>
+        </div>
+        <h3 class="font-semibold text-slate-900 mt-6 mb-4 uppercase text-sm tracking-wide">Familiar With</h3>
+        <div class="flex flex-wrap gap-2">
+          <span class="skill-pill bg-slate-200 text-slate-800 text-xs font-medium px-3 py-1.5 rounded-full cursor-default">COMSOL Multiphysics</span>
+          <span class="skill-pill bg-slate-200 text-slate-800 text-xs font-medium px-3 py-1.5 rounded-full cursor-default">ABAQUS</span>
+          <span class="skill-pill bg-slate-200 text-slate-800 text-xs font-medium px-3 py-1.5 rounded-full cursor-default">STAAD Pro</span>
+          <span class="skill-pill bg-slate-200 text-slate-800 text-xs font-medium px-3 py-1.5 rounded-full cursor-default">NDT</span>
+        </div>
+        <h3 class="font-semibold text-slate-900 mt-6 mb-3 uppercase text-sm tracking-wide">Education</h3>
+        <ul class="text-sm text-slate-600 space-y-2">
+          <li><span class="font-medium text-slate-900">Ph.D., Civil Engineering</span><br/>IIT Roorkee — Thesis Submitted, 2026</li>
+          <li><span class="font-medium text-slate-900">M.Tech.</span><br/>IIT Roorkee, 2013</li>
+          <li><span class="font-medium text-slate-900">B.E.</span><br/>Shri G.S. Institute of Tech. &amp; Science, 2011</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="experience" class="fade-in-section py-24 px-6 bg-slate-50">
+  <div class="max-w-5xl mx-auto">
+    <p class="text-amber-600 font-semibold uppercase tracking-widest text-sm mb-2 text-center">Career Path</p>
+    <h2 class="font-serif-heading text-3xl md:text-4xl font-bold text-slate-900 text-center mb-16">Professional Experience</h2>
+    <div class="space-y-12 max-w-3xl mx-auto">
+      <div class="timeline-item pb-2">
+        <span class="timeline-dot"></span>
+        <p class="text-amber-600 text-sm font-semibold mb-1">Aug 2021 – Present</p>
+        <h3 class="text-lg font-bold text-slate-900">Doctoral Researcher</h3>
+        <p class="text-slate-500 text-sm mb-2">Indian Institute of Technology Roorkee</p>
+        <p class="text-slate-700 text-sm leading-relaxed">Leading SERB-funded research on fracture and fatigue performance of reinforced concrete under coupled corrosion-fatigue environments, combining acoustic emission monitoring with analytical and numerical modeling.</p>
+      </div>
+      <div class="timeline-item pb-2">
+        <span class="timeline-dot"></span>
+        <p class="text-amber-600 text-sm font-semibold mb-1">Jan 2018 – Jul 2021</p>
+        <h3 class="text-lg font-bold text-slate-900">Assistant Professor</h3>
+        <p class="text-slate-500 text-sm mb-2">Jabalpur Engineering College</p>
+        <p class="text-slate-700 text-sm leading-relaxed">Taught Structural Analysis, RCC Design, and Engineering Mechanics; supervised undergraduate final-year projects on structural assessment and construction materials. Led multiple CPWD/PWD structural audit and design consultancy projects.</p>
+      </div>
+      <div class="timeline-item pb-2">
+        <span class="timeline-dot"></span>
+        <p class="text-amber-600 text-sm font-semibold mb-1">Jul 2014 – Jan 2018</p>
+        <h3 class="text-lg font-bold text-slate-900">Assistant Professor</h3>
+        <p class="text-slate-500 text-sm mb-2">The ICFAI University</p>
+        <p class="text-slate-700 text-sm leading-relaxed">Delivered core Civil Engineering coursework across multiple semesters and mentored students through experimental and analytical structural engineering projects.</p>
+      </div>
+      <div class="timeline-item pb-2">
+        <span class="timeline-dot"></span>
+        <p class="text-amber-600 text-sm font-semibold mb-1">Jul 2013 – Jun 2014</p>
+        <h3 class="text-lg font-bold text-slate-900">Assistant Project Manager</h3>
+        <p class="text-slate-500 text-sm mb-2">Jones Lang LaSalle</p>
+        <p class="text-slate-700 text-sm leading-relaxed">Managed civil construction of a 2B+G+7 storey hostel building in Mumbai — coordinating contractors, consultants, and clients while monitoring timelines, costs, and quality compliance across structural and finishing works.</p>
+      </div>
+    </div>
+
+    <h3 class="font-serif-heading text-2xl font-bold text-slate-900 text-center mt-20 mb-10">Selected Research &amp; Consultancy Projects</h3>
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
+        <p class="text-xs font-semibold text-amber-600 uppercase mb-1">SERB, India · 2021–2024</p>
+        <h4 class="font-bold text-slate-900 mb-2">Fracture Performance of RC Members in Coupled Corrosion-Fatigue Environment</h4>
+        <p class="text-sm text-slate-600">Core PhD research investigating fracture and fatigue performance of reinforced concrete under simultaneous corrosion and cyclic loading.</p>
+      </div>
+      <div class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
+        <p class="text-xs font-semibold text-amber-600 uppercase mb-1">NPIU (TEQIP-III) · 2019–2020</p>
+        <h4 class="font-bold text-slate-900 mb-2">Nonlinear FE Analysis of Concrete Damage Due to Impact Loading</h4>
+        <p class="text-sm text-slate-600">Collaborative funded research using ABAQUS to simulate nonlinear concrete damage under impact loading.</p>
+      </div>
+      <div class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
+        <p class="text-xs font-semibold text-amber-600 uppercase mb-1">CPWD · 2020–2021</p>
+        <h4 class="font-bold text-slate-900 mb-2">Structural Design & Soundness Evaluation, Vijay Nagar, Jabalpur</h4>
+        <p class="text-sm text-slate-600">Structural design of first-floor slab and beam per IS codes, plus a full soundness evaluation of an existing office building.</p>
+      </div>
+      <div class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
+        <p class="text-xs font-semibold text-amber-600 uppercase mb-1">Hon'ble High Court of MP · 2019</p>
+        <h4 class="font-bold text-slate-900 mb-2">Structural Audit of High Court Buildings</h4>
+        <p class="text-sm text-slate-600">Structural audit of buildings within the High Court complex, including a heritage structure.</p>
+      </div>
+    </div>
+
+    <div class="mt-16 grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+      <div class="flex items-start gap-4 bg-white rounded-xl p-5 border border-slate-200">
+        <i class="fa-solid fa-trophy text-amber-500 text-2xl mt-1"></i>
+        <div>
+          <h4 class="font-bold text-slate-900">Best Paper Award</h4>
+          <p class="text-sm text-slate-600">CARRS 2025 — 2nd International Conference on Condition Assessment, Rehabilitation & Retrofitting of Structures</p>
+        </div>
+      </div>
+      <div class="flex items-start gap-4 bg-white rounded-xl p-5 border border-slate-200">
+        <i class="fa-solid fa-medal text-amber-500 text-2xl mt-1"></i>
+        <div>
+          <h4 class="font-bold text-slate-900">MHRD Scholarship</h4>
+          <p class="text-sm text-slate-600">Postgraduate scholarship awarded through GATE qualification</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="publications" class="fade-in-section py-24 px-6 bg-white">
+  <div class="max-w-5xl mx-auto">
+    <p class="text-amber-600 font-semibold uppercase tracking-widest text-sm mb-2 text-center">Research Output</p>
+    <h2 class="font-serif-heading text-3xl md:text-4xl font-bold text-slate-900 text-center mb-4">Publications &amp; Research</h2>
+    <p class="text-center text-slate-500 mb-14 max-w-2xl mx-auto">Peer-reviewed journal articles, conference proceedings, and ongoing research on acoustic emission and corrosion-fatigue in reinforced concrete.</p>
+    <h3 class="text-lg font-bold text-slate-900 mb-6 flex items-center gap-2"><i class="fa-solid fa-star text-amber-500"></i> Q1 / SCIE-Indexed Journal Articles</h3>
+    <div class="grid gap-5 mb-14">
+      <button class="pub-card border border-slate-200 rounded-xl p-6 bg-slate-50 text-left" data-title="A Hybrid Analytical Framework for Coupled Corrosion-Fatigue in RC Beams: From Anodic Flaw Evolution to Global Stiffness Decay" data-journal="International Journal of Fatigue, Elsevier · 2026" data-authors="Vivek Vishwakarma, Sonalisa Ray" data-brief="<strong>Highlights</strong><ul class='list-disc pl-5 mt-3 space-y-2'><li>Hybrid framework links pit kinetics to global stiffness via flaw geometry.</li><li>Dual modules predict remaining life and stiffness under corrosion-fatigue.</li><li>Validated on two RC beam tests with up to 85%–99% fatigue and stiffness accuracy.</li><li>Pit morphology and coupled stress, not mass loss, govern stiffness decay.</li></ul>" data-doi="https://doi.org/10.1016/j.ijfatigue.2026.109847">
+        <p class="text-xs font-semibold text-amber-600 uppercase mb-2">International Journal of Fatigue, Elsevier · 2026</p>
+        <h4 class="font-bold text-slate-900 mb-2">A Hybrid Analytical Framework for Coupled Corrosion-Fatigue in RC Beams: From Anodic Flaw Evolution to Global Stiffness Decay</h4>
+        <p class="text-sm text-slate-600 mb-2">Vivek Vishwakarma, Sonalisa Ray</p>
+        <p class="text-sm text-slate-600">Click to open brief summary panel.</p>
+      </button>
+      <button class="pub-card border border-slate-200 rounded-xl p-6 bg-slate-50 text-left" data-title="Coupled Corrosion and Fatigue in Reinforced Concrete Beams: Experimental Interpretation of Mechanical and Electrochemical Synergy" data-journal="International Journal of Fatigue, Elsevier · 2025" data-authors="Vivek Vishwakarma, Sonalisa Ray" data-brief="<strong>Highlights</strong><ul class='list-disc pl-5 mt-3 space-y-2'><li>Novel two-beam setup captures coupled corrosion-fatigue interaction in RC beams.</li><li>Corrosion kinetics under coupled loading directly accelerate fatigue deterioration.</li><li>Localized pits and crack-induced corrosion dominate failure over total mass loss.</li><li>Real-time LPR and HCP reveal fatigue cracks enhance electrochemical rate.</li><li>Results support mechanism-based models for RC service-life in aggressive conditions.</li></ul>" data-doi="#">
+        <p class="text-xs font-semibold text-amber-600 uppercase mb-2">International Journal of Fatigue, Elsevier · 2025</p>
+        <h4 class="font-bold text-slate-900 mb-2">Coupled Corrosion and Fatigue in Reinforced Concrete Beams: Experimental Interpretation of Mechanical and Electrochemical Synergy</h4>
+        <p class="text-sm text-slate-600 mb-2">Vivek Vishwakarma, Sonalisa Ray</p>
+        <p class="text-sm text-slate-600">Click to open brief summary panel.</p>
+      </button>
+      <button class="pub-card border border-slate-200 rounded-xl p-6 bg-slate-50 text-left" data-title="Probability-Based Prediction of Crack Propagation in Lightly Reinforced Concrete Beams Using Acoustic Emission Technique" data-journal="Applied Acoustics, Elsevier · 2025" data-authors="Vivek Vishwakarma, Sonalisa Ray" data-brief="<strong>Highlights</strong><ul class='list-disc pl-5 mt-3 space-y-2'><li>Assessing crack propagation in lightly reinforced concrete beams using acoustic emission technology.</li><li>Probability-base clustering of AE parameters: averaged frequency (AF) and rise angle (RA).</li><li>Characterisation of tensile crack events using posterior probability of the events.</li><li>Prediction of crack path, length and construction of 3D crack plane of lightly reinforced concrete beams.</li></ul>" data-doi="#">
+        <p class="text-xs font-semibold text-amber-600 uppercase mb-2">Applied Acoustics, Elsevier · 2025</p>
+        <h4 class="font-bold text-slate-900 mb-2">Probability-Based Prediction of Crack Propagation in Lightly Reinforced Concrete Beams Using Acoustic Emission Technique</h4>
+        <p class="text-sm text-slate-600 mb-2">Vivek Vishwakarma, Sonalisa Ray</p>
+        <p class="text-sm text-slate-600">Click to open brief summary panel.</p>
+      </button>
+      <button class="pub-card border border-slate-200 rounded-xl p-6 bg-slate-50 text-left" data-title="Modified Brazilian Test for Studying Crack Initiation and Fracture Behavior in SFRC Using DIC &amp; AE" data-journal="Construction and Building Materials, Elsevier · 2026" data-authors="Vaibhav W. Masih, Gonzalo Ruiz, Sohanth T. Maganty, Awadhesh Sharma, Sonalisa Ray, Vivek Vishwakarma, Ángel De La Rosa, Rena C. Yu" data-brief="<strong>Highlights</strong><ul class='list-disc pl-5 mt-3 space-y-2'><li>A Modified Brazilian Test (MBT) was developed for SFRC and UHPFRC.</li><li>The setup promotes stable central cracking without specimen notching.</li><li>DIC and AE enabled full-field and internal damage monitoring.</li><li>Crack initiation occurred at about 0.2% strain and 52–64% of peak load.</li><li>Numerical simulations reproduced load response and damage localization.</li></ul>" data-doi="#">
+        <p class="text-xs font-semibold text-amber-600 uppercase mb-2">Construction and Building Materials, Elsevier · 2026</p>
+        <h4 class="font-bold text-slate-900 mb-2">Modified Brazilian Test for Studying Crack Initiation and Fracture Behavior in SFRC Using DIC &amp; AE</h4>
+        <p class="text-sm text-slate-600 mb-2">Vaibhav W. Masih, Gonzalo Ruiz, Sohanth T. Maganty, Awadhesh Sharma, Sonalisa Ray, Vivek Vishwakarma, Ángel De La Rosa, Rena C. Yu</p>
+        <p class="text-sm text-slate-600">Click to open brief summary panel.</p>
+      </button>
+    </div>
+    <h3 class="text-lg font-bold text-slate-900 mb-6 flex items-center gap-2"><i class="fa-solid fa-users text-amber-500"></i> International Conference Proceedings</h3>
+    <div class="grid gap-4">
+      <div class="pub-card border border-slate-200 rounded-lg p-5 bg-white cursor-default">
+        <p class="text-sm text-slate-700"><span class="font-semibold">Behaviour of Reinforced Cement Concrete Under Coupled Corrosion Fatigue</span> — FraMCoS XII, IA-FraMCoS, 2025</p>
+      </div>
+      <div class="pub-card border border-slate-200 rounded-lg p-5 bg-white cursor-default">
+        <p class="text-sm text-slate-700"><span class="font-semibold">Prediction of Crack Path in Reinforced Concrete Using Acoustic Emission Analysis</span> — Procedia Structural Integrity, Elsevier, 2024</p>
+      </div>
+      <div class="pub-card border border-slate-200 rounded-lg p-5 bg-white cursor-default">
+        <p class="text-sm text-slate-700"><span class="font-semibold">Effects of Coupled Corrosion and Fatigue on the Performance of Reinforced Cement Concrete</span> — FraMCoS-11, IA-FraMCoS, 2023</p>
+      </div>
+    </div>
+    <div class="text-center mt-12">
+      <a href="https://orcid.org/0009-0000-8398-6749" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-amber-700 font-semibold hover:text-amber-800 transition"><i class="fa-brands fa-orcid text-xl"></i> View full publication record on ORCID</a>
+    </div>
+  </div>
+</section>
+<section id="contact" class="fade-in-section py-24 px-6 hero-bg text-white">
+  <div class="max-w-3xl mx-auto text-center">
+    <p class="text-amber-500 font-semibold uppercase tracking-widest text-sm mb-2">Let's Connect</p>
+    <h2 class="font-serif-heading text-3xl md:text-4xl font-bold mb-6">Get In Touch</h2>
+    <p class="text-slate-300 mb-10 max-w-xl mx-auto leading-relaxed">Open to research collaborations, peer discussions, and opportunities in structural health monitoring, acoustic emission, and durability engineering.</p>
+    <div class="flex flex-wrap justify-center gap-4 mb-10">
+      <a href="mailto:vivek.200100@gmail.com" class="flex items-center gap-3 bg-white/10 hover:bg-amber-600 border border-white/20 rounded-lg px-6 py-3 transition"><i class="fa-solid fa-envelope"></i> Email</a>
+      <a href="https://www.linkedin.com/in/vivek-vishwakarma-b2982024/" target="_blank" rel="noopener" class="flex items-center gap-3 bg-white/10 hover:bg-amber-600 border border-white/20 rounded-lg px-6 py-3 transition"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+      <a href="https://orcid.org/0009-0000-8398-6749" target="_blank" rel="noopener" class="flex items-center gap-3 bg-white/10 hover:bg-amber-600 border border-white/20 rounded-lg px-6 py-3 transition"><i class="fa-brands fa-orcid"></i> ORCID</a>
+      <a href="https://wa.me/919619929912?text=Hello%20Vivek%2C%20I%20found%20your%20portfolio." target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 bg-white/10 hover:bg-amber-600 border border-white/20 rounded-lg px-6 py-3 transition"><i class="fa-brands fa-whatsapp"></i> WhatsApp me</a>
+    </div>
+    <p class="text-slate-500 text-xs">Department of Civil Engineering, Indian Institute of Technology Roorkee, Uttarakhand, India</p>
+  </div>
+</section>
+<footer class="bg-[#0f172a] text-slate-500 text-center py-6 text-xs">
+  <p>&copy; <span id="year"></span> Vivek Vishwakarma. Built with Tailwind CSS. Hosted on GitHub Pages.</p>
+</footer>
+
+<div id="drawer-backdrop" class="drawer-backdrop fixed inset-0 bg-slate-950/50 z-[60] opacity-0 pointer-events-none"></div>
+<aside id="publication-drawer" class="drawer-panel fixed top-0 right-0 h-full w-full sm:w-[420px] md:w-[520px] bg-white shadow-2xl z-[70] translate-x-full flex flex-col">
+  <div class="flex items-start justify-between gap-4 border-b border-slate-200 px-6 py-5">
+    <div>
+      <p id="drawer-journal" class="text-xs font-semibold uppercase tracking-wide text-amber-600 mb-2"></p>
+      <h3 id="drawer-title" class="text-xl font-bold text-slate-900 leading-snug"></h3>
+      <p id="drawer-authors" class="text-sm text-slate-500 mt-2"></p>
+    </div>
+    <button id="drawer-close" class="text-slate-500 hover:text-slate-900 text-xl" aria-label="Close publication panel">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+  </div>
+  <div class="flex-1 overflow-y-auto px-6 py-6">
+    <h4 class="text-sm font-semibold uppercase tracking-wide text-slate-700 mb-3">Brief Overview</h4>
+    <p id="drawer-brief" class="text-slate-700 leading-relaxed text-sm md:text-base">Add your short, publication-specific summary here later.</p>
+  </div>
+  <div class="border-t border-slate-200 px-6 py-5 bg-slate-50">
+    <a id="drawer-doi" href="#" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-amber-700 font-semibold hover:text-amber-800 transition">
+      <i class="fa-solid fa-link"></i> View DOI / Further Details
+    </a>
+  </div>
+</aside>
+
+<script>
+  const menuBtn = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  menuBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+  });
+  document.querySelectorAll('#mobile-menu a').forEach(link => {
+    link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+  });
+
+  const sections = document.querySelectorAll('.fade-in-section');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  sections.forEach(section => observer.observe(section));
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const drawer = document.getElementById('publication-drawer');
+  const backdrop = document.getElementById('drawer-backdrop');
+  const drawerTitle = document.getElementById('drawer-title');
+  const drawerJournal = document.getElementById('drawer-journal');
+  const drawerAuthors = document.getElementById('drawer-authors');
+  const drawerBrief = document.getElementById('drawer-brief');
+  const drawerDoi = document.getElementById('drawer-doi');
+  const drawerClose = document.getElementById('drawer-close');
+  const publicationCards = document.querySelectorAll('button.pub-card');
+
+  function openDrawer(card) {
+    drawerTitle.innerHTML = card.dataset.title || 'Publication Title';
+    drawerJournal.textContent = card.dataset.journal || '';
+    drawerAuthors.textContent = card.dataset.authors || '';
+    drawerBrief.innerHTML = `<div class='prose prose-sm max-w-none'>${card.dataset.brief || 'Add your publication summary here later.'}</div>`;
+
+    const doi = card.dataset.doi || '#';
+    drawerDoi.setAttribute('href', doi);
+    drawerDoi.style.pointerEvents = doi === '#' ? 'none' : 'auto';
+    drawerDoi.style.opacity = doi === '#' ? '0.5' : '1';
+
+    drawer.classList.remove('translate-x-full');
+    backdrop.classList.remove('opacity-0', 'pointer-events-none');
+    document.body.classList.add('overflow-hidden');
+  }
+
+  function closeDrawer() {
+    drawer.classList.add('translate-x-full');
+    backdrop.classList.add('opacity-0', 'pointer-events-none');
+    document.body.classList.remove('overflow-hidden');
+  }
+
+  publicationCards.forEach(card => {
+    card.addEventListener('click', () => openDrawer(card));
+  });
+
+  drawerClose.addEventListener('click', closeDrawer);
+  backdrop.addEventListener('click', closeDrawer);
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeDrawer();
+  });
+</script>
+</body>
+</html>
