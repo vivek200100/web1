@@ -3,63 +3,541 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="A physics-informed research journey from coupled corrosion-fatigue to acoustic emission signal recovery and structural prognosis." />
-  <title>Research Method | Vivek Vishwakarma</title>
+  <title>Research Methods</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    :root { --bg:#07111d; --bg2:#0b1928; --paper:#edf4f7; --muted:#94a9b8; --line:rgba(174,211,223,.16); --cyan:#54e6ee; --cyan2:#1aa8c2; --amber:#e89a38; --rust:#d9653b; --ink:#07111d; }
-    * { box-sizing:border-box; }
-    html { scroll-behavior:smooth; background:var(--bg); }
-    body { margin:0; color:var(--paper); background:var(--bg); font-family:"DM Sans",sans-serif; overflow-x:hidden; }
-    a { color:inherit; text-decoration:none; }
-    .noise { position:fixed; inset:0; pointer-events:none; z-index:9; opacity:.045; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E"); }
-    .nav { position:fixed; inset:0 0 auto; z-index:20; height:74px; display:flex; align-items:center; justify-content:space-between; padding:0 clamp(22px,5vw,72px); border-bottom:1px solid transparent; transition:.3s ease; }
-    .nav.scrolled { background:rgba(7,17,29,.8); border-color:var(--line); backdrop-filter:blur(14px); }
-    .mark { font-family:"Playfair Display",serif; font-size:23px; font-weight:700; letter-spacing:-.05em; }.mark i{color:var(--amber);font-style:normal}
-    .nav-right { display:flex; align-items:center; gap:22px; font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:#b4c6d0; }.nav-right a:hover{color:var(--cyan)}
-    .back { border:1px solid var(--line); border-radius:999px; padding:10px 14px; color:var(--paper)!important; }
-    .hero { min-height:100svh; position:relative; display:grid; place-items:center; isolation:isolate; overflow:hidden; padding:120px 24px 82px; }
-    .grid-bg { position:absolute; inset:0; z-index:-2; background:linear-gradient(rgba(117,183,203,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(117,183,203,.07) 1px,transparent 1px); background-size:64px 64px; mask-image:radial-gradient(ellipse 75% 65% at 50% 48%,#000 10%,transparent 73%); }
-    .orb { position:absolute; width:min(68vw,780px); aspect-ratio:1; border-radius:50%; z-index:-1; background:radial-gradient(circle at 42% 45%,rgba(53,219,232,.17),rgba(22,104,140,.09) 35%,transparent 68%); filter:blur(1px); animation:breathe 7s ease-in-out infinite; }
-    @keyframes breathe{50%{transform:scale(1.12);opacity:.74}}
-    .hero-inner { width:min(1100px,100%); text-align:center; }.eyebrow { color:var(--cyan); font:500 11px "DM Mono",monospace; letter-spacing:.16em; text-transform:uppercase; }.eyebrow::before{content:"";display:inline-block;width:28px;height:1px;background:currentColor;vertical-align:middle;margin:0 9px 3px 0}
-    h1,h2 { font-family:"Playfair Display",serif; font-weight:600; letter-spacing:-.045em; margin:0; } h1{font-size:clamp(50px,8.5vw,122px);line-height:.95;max-width:1000px;margin:25px auto 25px;} h1 em{font-style:normal;color:var(--cyan)}
-    .hero p { max-width:655px; color:#b4c6d0; margin:0 auto; font-size:clamp(16px,1.7vw,20px); line-height:1.65; }.hero-actions{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:38px}.button{padding:13px 18px;border-radius:4px;font-size:13px;font-weight:600;transition:.25s;}.button.primary{background:var(--cyan);color:var(--ink)}.button.primary:hover{background:#a4f6f7;transform:translateY(-2px)}.button.ghost{border:1px solid var(--line);color:#d9e7eb}.button.ghost:hover{border-color:var(--cyan);color:var(--cyan)}
-    .scroll-prompt{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);font:10px "DM Mono",monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}.scroll-prompt span{display:block;width:1px;height:30px;background:linear-gradient(var(--cyan),transparent);margin:9px auto 0;animation:scroll 1.8s ease infinite}@keyframes scroll{50%{transform:scaleY(.55);transform-origin:top}}
-    section { position:relative; }.chapter { min-height:100svh; display:grid; align-items:center; padding:110px clamp(24px,7vw,110px); overflow:hidden; }.chapter-inner{width:min(1180px,100%);margin:auto;}.section-number{font:11px "DM Mono",monospace;color:var(--cyan);letter-spacing:.14em}.title{font-size:clamp(38px,5.5vw,76px);line-height:1.02;max-width:780px;margin:18px 0 25px}.body-copy{color:#aec0ca;line-height:1.75;font-size:17px;max-width:550px}.accent-rust{color:var(--amber)}
-    .problem { background:#0a1826; }.problem:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 83% 54%,rgba(217,101,59,.13),transparent 28%);pointer-events:none}.feedback { position:absolute; width:min(43vw,580px); right:6vw; top:50%; transform:translateY(-50%); aspect-ratio:1; border:1px solid rgba(232,154,56,.45); border-radius:50%; display:grid;place-items:center; }.feedback:before,.feedback:after{content:"";position:absolute;border-radius:50%;border:1px dashed rgba(84,230,238,.23);inset:14%;animation:spin 24s linear infinite}.feedback:after{inset:28%;animation-direction:reverse;animation-duration:14s}.feedback-center{font:12px "DM Mono",monospace;text-align:center;color:var(--paper);line-height:1.6}.node{position:absolute;background:#10293a;border:1px solid rgba(232,154,56,.56);width:118px;aspect-ratio:1;border-radius:50%;display:grid;place-items:center;text-align:center;padding:12px;font-size:11px;line-height:1.25;color:#e7edf0}.n1{top:-35px;left:50%;transform:translateX(-50%)}.n2{right:-35px;top:50%;transform:translateY(-50%)}.n3{bottom:-35px;left:50%;transform:translateX(-50%)}.n4{left:-35px;top:50%;transform:translateY(-50%)}@keyframes spin{to{transform:rotate(360deg)}}
-    .mechanics { background:var(--bg); }.beam-stage{position:absolute;right:5vw;top:50%;width:min(48vw,670px);transform:translateY(-50%);height:330px}.beam{position:absolute;top:43%;left:0;right:0;height:86px;border:1px solid rgba(229,242,244,.45);background:linear-gradient(180deg,#617784,#334b59);box-shadow:0 24px 45px rgba(0,0,0,.4)}.rebar{position:absolute;left:8%;right:8%;top:66%;height:11px;border-radius:20px;background:repeating-linear-gradient(100deg,#bd7a36 0 5px,#76421f 5px 10px);z-index:1}.crack{position:absolute;left:50%;top:0;width:2px;height:66%;background:var(--amber);box-shadow:0 0 15px var(--amber);transform:rotate(6deg);transform-origin:bottom}.pit{position:absolute;left:50%;top:61%;width:34px;height:22px;border-radius:50% 50% 65% 65%;background:var(--rust);transform:translateX(-48%);z-index:2;box-shadow:0 0 22px rgba(217,101,59,.9)}.stiffness{position:absolute;right:4%;bottom:0;width:78%;height:92px;border-left:1px solid var(--line);border-bottom:1px solid var(--line)}.stiffness svg{width:100%;height:100%;overflow:visible}.stiffness path{fill:none;stroke:var(--cyan);stroke-width:2;stroke-dasharray:260;stroke-dashoffset:260;transition:stroke-dashoffset 1.8s ease}.visible .stiffness path{stroke-dashoffset:0}.label{font:10px "DM Mono",monospace;letter-spacing:.08em;color:var(--muted);position:absolute}.l1{top:4%;left:1%}.l2{bottom:-25px;right:4%}
-    .signal { background:#091826; }.signal-layout{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}.spectrum{height:310px;position:relative;border-bottom:1px solid var(--line);border-left:1px solid var(--line);background:linear-gradient(90deg,transparent 24.7%,rgba(174,211,223,.08) 25%,transparent 25.3%,transparent 49.7%,rgba(174,211,223,.08) 50%,transparent 50.3%,transparent 74.7%,rgba(174,211,223,.08) 75%,transparent 75.3%)}.bars{height:100%;display:flex;align-items:end;gap:4px;padding:0 6px}.bar{flex:1;background:linear-gradient(var(--cyan),rgba(84,230,238,.14));transform-origin:bottom;animation:bars 2.3s ease-in-out infinite alternate}.bar:nth-child(3n){animation-delay:-.8s}.bar:nth-child(4n){animation-delay:-1.4s}@keyframes bars{to{transform:scaleY(.68)}}.waterline{position:absolute;inset:0;background:linear-gradient(90deg,rgba(7,17,29,.12),rgba(7,17,29,.75));clip-path:polygon(53% 0,100% 0,100% 100%,53% 100%,47% 50%);pointer-events:none}.water-label{position:absolute;right:10%;top:17%;color:var(--rust);font:11px "DM Mono",monospace;letter-spacing:.1em;text-transform:uppercase}.wave{margin-top:28px;width:100%;height:64px;overflow:hidden}.wave svg{width:130%;height:100%;animation:drift 7s linear infinite}.wave path{fill:none;stroke:var(--cyan);stroke-width:2}@keyframes drift{to{transform:translateX(-18%)}}
-    .xcon{background:radial-gradient(circle at 68% 35%,rgba(17,122,149,.2),transparent 28%),#07111d}.pipeline{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:55px}.step{min-height:230px;border:1px solid var(--line);padding:24px;background:rgba(18,41,56,.45);position:relative;overflow:hidden}.step:after{content:"";position:absolute;right:-14px;top:50%;width:27px;height:27px;border-top:1px solid var(--cyan);border-right:1px solid var(--cyan);transform:rotate(45deg) translateY(-50%);z-index:2}.step:last-child:after{display:none}.step-kicker{font:10px "DM Mono",monospace;color:var(--cyan);letter-spacing:.12em}.step h3{font-size:22px;margin:17px 0 10px}.step p{color:#a8bdc8;font-size:14px;line-height:1.6;margin:0}.mini-wave{height:58px;margin-top:35px;background:repeating-linear-gradient(90deg,transparent 0 9px,rgba(84,230,238,.15) 10px 11px);position:relative}.mini-wave:before{content:"";position:absolute;inset:20px 0;background:linear-gradient(135deg,transparent 0 7%,var(--cyan) 7.5% 9%,transparent 9.5% 17%,var(--cyan) 17.5% 19%,transparent 19.5% 28%,var(--cyan) 28.5% 30%,transparent 30.5%);opacity:.8}.consensus{display:flex;gap:7px;margin-top:28px}.vote{width:25px;height:25px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;font-size:12px}.vote.on{background:var(--cyan);color:#07111d;border-color:var(--cyan)}
-    .geometry{background:#0b1928}.cloud{position:absolute;right:7vw;top:50%;transform:translateY(-50%);width:min(45vw,600px);aspect-ratio:1;border:1px solid rgba(84,230,238,.18);background:radial-gradient(circle,rgba(84,230,238,.1),transparent 66%)}.cloud:before{content:"";position:absolute;inset:14%;border:1px dashed rgba(84,230,238,.25);border-radius:50%;animation:spin 28s linear infinite}.dot{position:absolute;width:6px;height:6px;background:var(--cyan);border-radius:50%;box-shadow:0 0 10px var(--cyan);opacity:.75}.crackline{position:absolute;left:47%;top:15%;height:70%;width:2px;background:var(--amber);transform:rotate(-15deg);box-shadow:0 0 13px var(--amber)}
-    .convergence{min-height:100svh;background:var(--paper);color:var(--ink);display:grid;place-items:center;padding:100px 24px}.convergence .chapter-inner{text-align:center}.convergence .section-number{color:#1689a0}.convergence .title{margin-inline:auto;max-width:900px}.convergence .body-copy{color:#405361;margin:0 auto}.loop{width:min(620px,86vw);aspect-ratio:1;margin:52px auto 0;border:1px solid rgba(7,17,29,.23);border-radius:50%;position:relative}.loop:before,.loop:after{content:"";position:absolute;border-radius:50%;border:1px dashed rgba(22,137,160,.4);inset:13%;animation:spin 25s linear infinite}.loop:after{inset:29%;border-color:rgba(217,101,59,.43);animation-direction:reverse;animation-duration:16s}.loop-center{position:absolute;inset:33%;border-radius:50%;background:#07111d;color:var(--paper);display:grid;place-items:center;padding:25px;font:500 16px "DM Mono",monospace;line-height:1.4}.loop-node{position:absolute;width:126px;min-height:54px;background:#fff;border:1px solid rgba(7,17,29,.18);box-shadow:0 12px 28px rgba(7,17,29,.08);padding:11px 8px;display:grid;place-items:center;font-size:11px;font-weight:700;line-height:1.25}.a{top:-25px;left:50%;transform:translateX(-50%)}.b{right:-46px;top:47%}.c{bottom:-27px;left:50%;transform:translateX(-50%)}.d{left:-46px;top:47%}.footer-link{display:inline-flex;gap:8px;align-items:center;margin-top:45px;font-size:13px;font-weight:700;color:#087f96;border-bottom:1px solid currentColor;padding-bottom:4px}
-    .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease}.reveal.visible{opacity:1;transform:none}.delay{transition-delay:.16s}
-    @media(max-width:800px){.nav-right a:not(.back){display:none}.chapter{min-height:auto;padding-block:130px}.feedback,.beam-stage,.cloud{position:relative;right:auto;top:auto;transform:none;margin:55px auto 5px;width:min(78vw,390px)}.problem .chapter-inner,.mechanics .chapter-inner,.geometry .chapter-inner{display:flex;flex-direction:column}.feedback{order:2}.beam-stage{order:2;height:250px}.cloud{order:2}.signal-layout{grid-template-columns:1fr;gap:40px}.pipeline{grid-template-columns:1fr}.step:after{right:auto;top:auto;left:50%;bottom:-14px;transform:rotate(135deg) translateY(-50%)}.loop{margin-top:75px}.loop-node{width:104px;font-size:10px}.b{right:-29px}.d{left:-29px}.nav{padding-inline:22px}}
-    @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}.stiffness path{stroke-dashoffset:0}}
+    :root{
+      --bg:#07131d;
+      --bg2:#091f2d;
+      --panel:#0b2230;
+      --panel2:#102c3d;
+      --paper:#edf3f6;
+      --muted:#93a6b3;
+      --cyan:#54e6ee;
+      --cyan-soft:rgba(84,230,238,.22);
+      --rust:#e89a38;
+      --rust-soft:rgba(232,154,56,.28);
+      --line:rgba(255,255,255,.09);
+      --shadow:0 18px 50px rgba(0,0,0,.34);
+      --max:1440px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:
+        radial-gradient(circle at 10% 15%, rgba(84,230,238,.08), transparent 28%),
+        radial-gradient(circle at 90% 75%, rgba(232,154,56,.06), transparent 24%),
+        linear-gradient(180deg, #08141f 0%, #07131d 100%);
+      color:var(--paper);
+      overflow-x:hidden;
+    }
+    .page{
+      width:min(100%, var(--max));
+      margin:0 auto;
+      position:relative;
+    }
+    .topbar{
+      position:fixed;
+      top:0; left:0; right:0;
+      z-index:50;
+      backdrop-filter:blur(10px);
+      background:linear-gradient(180deg, rgba(7,19,29,.86), rgba(7,19,29,.18));
+      border-bottom:1px solid rgba(255,255,255,.05);
+    }
+    .topbar-inner{
+      width:min(100%, var(--max));
+      margin:auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:1rem;
+      padding:14px 20px;
+    }
+    .brand{
+      display:flex; gap:12px; align-items:center;
+      font-family:"DM Mono",monospace;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:var(--paper);
+      font-size:12px;
+    }
+    .brand-mark{
+      width:34px;height:34px;border-radius:50%;
+      border:1px solid var(--cyan-soft);
+      display:grid;place-items:center;
+      position:relative;
+      box-shadow:inset 0 0 18px rgba(84,230,238,.12);
+    }
+    .brand-mark:before,.brand-mark:after{
+      content:"";
+      position:absolute;
+      border-radius:50%;
+      inset:6px;
+      border:1px dashed rgba(232,154,56,.22);
+    }
+    .brand-mark:after{inset:12px;border-color:rgba(84,230,238,.22)}
+    nav a{
+      color:var(--muted);
+      text-decoration:none;
+      margin-left:22px;
+      font-size:13px;
+      transition:.25s ease;
+    }
+    nav a:hover{color:var(--paper)}
+    .hero{
+      min-height:100vh;
+      display:grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap:42px;
+      align-items:center;
+      padding:110px 24px 72px;
+      position:relative;
+    }
+    .hero:after{
+      content:"";
+      position:absolute;inset:auto 0 0 0;height:1px;
+      background:linear-gradient(90deg, transparent, rgba(255,255,255,.12), transparent);
+    }
+    .eyebrow,.section-number{
+      font-family:"DM Mono",monospace;
+      font-size:12px;
+      color:var(--cyan);
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      margin-bottom:18px;
+    }
+    h1,h2,h3,p{margin:0}
+    .hero h1{
+      font-size:clamp(3rem,6vw,6.2rem);
+      line-height:.95;
+      letter-spacing:-.04em;
+      font-weight:800;
+      max-width:11ch;
+    }
+    .accent-rust{color:var(--rust)}
+    .hero .lede{
+      margin-top:24px;
+      max-width:58ch;
+      font-size:1.08rem;
+      line-height:1.78;
+      color:#d6e0e6;
+    }
+    .hero .abstract{
+      margin-top:26px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+    }
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 14px;
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:999px;
+      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      color:#dce8ed;
+      font-size:13px;
+    }
+    .chip b{color:var(--cyan);font-weight:600}
+    .hero-visual{
+      position:relative;
+      height:min(74vh,720px);
+      min-height:520px;
+      display:grid;
+      place-items:center;
+    }
+    .orbit{
+      position:absolute;
+      width:min(82%,540px);
+      aspect-ratio:1;
+      border-radius:50%;
+      border:1px solid rgba(232,154,56,.38);
+      box-shadow:0 0 70px rgba(84,230,238,.06), inset 0 0 40px rgba(232,154,56,.05);
+    }
+    .orbit::before,.orbit::after{
+      content:"";
+      position:absolute;border-radius:50%;inset:12%;
+      border:1px dashed rgba(84,230,238,.25);
+      animation:spin 28s linear infinite;
+    }
+    .orbit::after{inset:26%;animation-direction:reverse;animation-duration:18s}
+    .core{
+      position:relative;
+      width:min(55%,330px);
+      aspect-ratio:1;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      text-align:center;
+      padding:2rem;
+      background:
+        radial-gradient(circle at 50% 50%, rgba(84,230,238,.22), transparent 38%),
+        radial-gradient(circle at 52% 56%, rgba(232,154,56,.15), transparent 52%),
+        linear-gradient(180deg, rgba(14,48,69,.95), rgba(8,23,34,.96));
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow:var(--shadow);
+    }
+    .core h3{
+      font-size:1.05rem;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:var(--paper);
+      line-height:1.35;
+    }
+    .core p{
+      margin-top:14px;
+      color:var(--muted);
+      font-size:.96rem;
+      line-height:1.62;
+    }
+    .tag{
+      position:absolute;
+      max-width:170px;
+      font-size:12px;
+      line-height:1.55;
+      color:#d9e6ec;
+      background:rgba(6,18,28,.72);
+      border:1px solid rgba(255,255,255,.06);
+      padding:12px 14px;
+      border-radius:14px;
+      box-shadow:var(--shadow);
+    }
+    .tag b{
+      display:block;
+      margin-bottom:4px;
+      color:var(--rust);
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+    }
+    .t1{top:4%;left:6%}
+    .t2{top:12%;right:4%}
+    .t3{bottom:10%;left:2%}
+    .t4{bottom:6%;right:8%}
+    @keyframes spin{to{transform:rotate(360deg)}}
+
+    .chapter{
+      min-height:100vh;
+      position:relative;
+      padding:88px 24px;
+      display:grid;
+      align-items:center;
+      overflow:hidden;
+    }
+    .chapter + .chapter{border-top:1px solid rgba(255,255,255,.04)}
+    .chapter-inner{
+      max-width:620px;
+      position:relative;
+      z-index:2;
+    }
+    .title{
+      font-size:clamp(2.3rem,4.3vw,4.7rem);
+      line-height:.98;
+      letter-spacing:-.04em;
+      font-weight:800;
+      max-width:12ch;
+    }
+    .body-copy{
+      margin-top:22px;
+      max-width:58ch;
+      color:#d4e0e6;
+      font-size:1.05rem;
+      line-height:1.82;
+    }
+
+    .feedback { position:absolute; width:min(43vw,580px); right:6vw; top:50%; transform:translateY(-50%); aspect-ratio:1; border:1px solid rgba(232,154,56,.45); border-radius:50%; display:grid;place-items:center; }.feedback:before,.feedback:after{content:"";position:absolute;border-radius:50%;border:1px dashed rgba(84,230,238,.23);inset:14%;animation:spin 24s linear infinite}.feedback:after{inset:28%;animation-direction:reverse;animation-duration:14s}.feedback-center{font:12px "DM Mono",monospace;text-align:center;color:var(--paper);line-height:1.6}.node{position:absolute;background:#10293a;border:1px solid rgba(232,154,56,.56);width:118px;aspect-ratio:1;border-radius:50%;display:grid;place-items:center;text-align:center;padding:12px;font-size:11px;line-height:1.25;color:#e7edf0}.n1{top:-35px;left:50%;transform:translateX(-50%)}.n2{right:-35px;top:50%;transform:translateY(-50%)}.n3{bottom:-35px;left:50%;transform:translateX(-50%)}.n4{left:-35px;top:50%;transform:translateY(-50%)}
+    .challenge-hero{position:relative;min-height:100vh;overflow:hidden}
+    .challenge-image{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+    .challenge-overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;padding:3rem clamp(1.5rem,4vw,4rem);background:linear-gradient(90deg, rgba(2,12,22,.78) 0%, rgba(2,12,22,.55) 32%, rgba(2,12,22,.18) 58%, rgba(2,12,22,0) 78%);z-index:1}
+    .challenge-overlay .title{max-width:12ch;margin-top:.6rem}
+    .challenge-overlay .body-copy{max-width:34rem;margin-top:1.15rem}
+    @media (max-width:900px){.challenge-hero{min-height:78vh}.challenge-overlay{justify-content:flex-end;padding:2rem 1.25rem 2.5rem;background:linear-gradient(180deg, rgba(2,12,22,.18) 0%, rgba(2,12,22,.36) 35%, rgba(2,12,22,.82) 100%)}.challenge-overlay .body-copy{max-width:100%}}
+
+    .mechanics { background:var(--bg); }.beam-stage{position:absolute;right:5vw;top:50%;width:min(48vw,670px);transform:translateY(-50%);height:330px}.beam{position:absolute;left:0;right:0;top:50%;height:112px;transform:translateY(-50%);background:linear-gradient(180deg,#8f979b,#b8c0c5 20%,#9ea7ad 45%,#7d858a 100%);border-radius:12px;box-shadow:var(--shadow);overflow:hidden}.beam:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg, rgba(0,0,0,.22), transparent 26%, transparent 74%, rgba(0,0,0,.18))}.beam .rebar{position:absolute;left:10%;right:6%;bottom:24px;height:18px;background:repeating-linear-gradient(90deg,#495259 0,#8b949a 18px,#4c5459 36px);border-radius:999px;box-shadow:0 0 0 4px rgba(0,0,0,.08)}.beam .pit{position:absolute;width:56px;height:56px;border-radius:50%;left:44%;bottom:2px;background:radial-gradient(circle,#ffb24a 0,#ec8f1b 18%, rgba(242,148,45,.38) 36%, transparent 68%);box-shadow:0 0 30px rgba(255,166,43,.48)}.beam .crack{position:absolute;left:49%;top:-16px;width:7px;height:86px;background:linear-gradient(180deg,#151a1f,#0c0f12);filter:drop-shadow(0 0 9px rgba(84,230,238,.2));clip-path:polygon(40% 0,100% 0,78% 16%,100% 31%,62% 52%,90% 73%,56% 100%,0 100%,18% 79%,0 57%,28% 35%,0 14%)}.stiffness{position:absolute;left:6%;right:8%;bottom:16px;height:100px}.stiffness svg{width:100%;height:100%}.stiffness path{fill:none;stroke:var(--cyan);stroke-width:3;stroke-linecap:round;filter:drop-shadow(0 0 10px rgba(84,230,238,.25))}.label{position:absolute;font:12px "DM Mono",monospace;color:#d4dfe4;letter-spacing:.08em}.l1{top:8px;left:10px}.l2{right:0;bottom:-6px;color:var(--rust)}
+
+    .signal-layout{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:48px;max-width:none}
+    .spectrum{
+      width:100%;
+      height:340px;
+      background:linear-gradient(180deg, rgba(13,34,48,.92), rgba(7,20,31,.96));
+      border:1px solid rgba(255,255,255,.06);
+      border-radius:22px;
+      position:relative;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+    }
+    .spectrum:before{
+      content:"";
+      position:absolute;inset:0;
+      background:
+        linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+      background-size:100% 44px, 52px 100%;
+      opacity:.55;
+    }
+    .bars{
+      position:absolute;left:24px;right:24px;bottom:34px;height:220px;
+      display:grid;grid-template-columns:repeat(36,1fr);gap:6px;align-items:end;
+    }
+    .bar{
+      border-radius:8px 8px 0 0;
+      background:linear-gradient(180deg, rgba(84,230,238,.95), rgba(84,230,238,.18));
+      box-shadow:0 0 18px rgba(84,230,238,.12);
+    }
+    .bar.low{
+      background:linear-gradient(180deg, rgba(232,154,56,.95), rgba(232,154,56,.18));
+      box-shadow:0 0 18px rgba(232,154,56,.12);
+    }
+    .waterline{
+      position:absolute;left:0;right:0;bottom:118px;height:2px;
+      background:linear-gradient(90deg, transparent, rgba(255,255,255,.18), transparent);
+    }
+    .water-label{
+      position:absolute;right:24px;bottom:126px;
+      font:12px "DM Mono",monospace;color:var(--paper);letter-spacing:.08em;text-transform:uppercase;
+      text-align:right;
+    }
+    .wave{
+      margin-top:18px;
+      height:110px;
+      border-radius:16px;
+      background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
+      border:1px solid rgba(255,255,255,.06);
+      overflow:hidden;
+      box-shadow:var(--shadow);
+    }
+    .wave svg{width:100%;height:100%}
+    .wave path{fill:none;stroke:var(--rust);stroke-width:3;stroke-linejoin:round;stroke-linecap:round;filter:drop-shadow(0 0 8px rgba(232,154,56,.2))}
+
+    .pipeline{
+      margin-top:34px;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+      max-width:1120px;
+    }
+    .step{
+      background:linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.015));
+      border:1px solid rgba(255,255,255,.06);
+      border-radius:24px;
+      padding:24px 20px 20px;
+      box-shadow:var(--shadow);
+      min-height:270px;
+    }
+    .step-kicker{
+      font:11px "DM Mono",monospace;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:var(--cyan);
+      margin-bottom:18px;
+    }
+    .step h3{font-size:1.28rem;line-height:1.2}
+    .step p{margin-top:14px;color:#d4e0e6;line-height:1.72;font-size:.98rem}
+    .mini-wave{
+      margin-top:20px;height:56px;border-radius:999px;position:relative;overflow:hidden;
+      background:linear-gradient(180deg, rgba(84,230,238,.08), rgba(84,230,238,.02));
+      border:1px solid rgba(84,230,238,.14);
+    }
+    .mini-wave:before{
+      content:"";
+      position:absolute;inset:0 10px;
+      background:
+        radial-gradient(circle at 12% 50%, rgba(84,230,238,.95) 0 2px, transparent 3px),
+        radial-gradient(circle at 30% 30%, rgba(84,230,238,.55) 0 2px, transparent 3px),
+        radial-gradient(circle at 48% 58%, rgba(232,154,56,.95) 0 2px, transparent 3px),
+        radial-gradient(circle at 66% 34%, rgba(84,230,238,.75) 0 2px, transparent 3px),
+        radial-gradient(circle at 84% 54%, rgba(84,230,238,.75) 0 2px, transparent 3px);
+    }
+    .consensus{display:flex;gap:12px;margin-top:22px}
+    .vote{
+      width:42px;height:42px;border-radius:50%;
+      display:grid;place-items:center;
+      border:1px solid rgba(255,255,255,.08);
+      background:rgba(255,255,255,.03);
+      color:var(--muted);
+      font-weight:700;
+    }
+    .vote.on{border-color:rgba(84,230,238,.4);color:var(--paper);box-shadow:0 0 20px rgba(84,230,238,.08)}
+
+    .cloud{
+      position:absolute;
+      right:4vw;top:50%;transform:translateY(-50%);
+      width:min(48vw,660px);height:min(64vh,520px);
+      border-radius:28px;
+      background:linear-gradient(180deg, rgba(10,30,43,.92), rgba(7,20,31,.96));
+      border:1px solid rgba(255,255,255,.06);
+      overflow:hidden;
+      box-shadow:var(--shadow);
+    }
+    .cloud:before{
+      content:"";
+      position:absolute;inset:0;
+      background:
+        radial-gradient(circle at 20% 30%, rgba(84,230,238,.18), transparent 14%),
+        radial-gradient(circle at 38% 62%, rgba(84,230,238,.12), transparent 12%),
+        radial-gradient(circle at 58% 45%, rgba(232,154,56,.18), transparent 13%),
+        radial-gradient(circle at 76% 30%, rgba(84,230,238,.14), transparent 10%),
+        radial-gradient(circle at 82% 76%, rgba(84,230,238,.12), transparent 10%);
+      filter:blur(8px);
+    }
+    .point{
+      position:absolute;
+      width:12px;height:12px;border-radius:50%;
+      background:radial-gradient(circle, #fff 0, var(--cyan) 34%, rgba(84,230,238,.2) 70%, transparent 72%);
+      box-shadow:0 0 22px rgba(84,230,238,.25);
+    }
+    .point.tensile{
+      background:radial-gradient(circle, #fff 0, var(--rust) 34%, rgba(232,154,56,.22) 70%, transparent 72%);
+      box-shadow:0 0 22px rgba(232,154,56,.24);
+    }
+    .crackline{
+      position:absolute;left:8%;right:12%;top:52%;
+      height:4px;border-radius:999px;
+      background:linear-gradient(90deg, transparent, rgba(255,255,255,.16), transparent);
+      transform:rotate(-28deg);
+    }
+    .crackline:before{
+      content:"";
+      position:absolute;left:22%;right:24%;top:-3px;height:10px;border-radius:999px;
+      background:linear-gradient(90deg, rgba(232,154,56,.8), rgba(84,230,238,.85));
+      filter:blur(.2px);
+      box-shadow:0 0 18px rgba(84,230,238,.14);
+    }
+
+    .convergence{
+      min-height:92vh;
+      display:grid;
+      align-items:center;
+      padding:88px 24px 110px;
+    }
+    .decision-grid{
+      margin-top:34px;
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:16px;
+      max-width:1180px;
+    }
+    .decision{
+      padding:22px 18px;
+      border-radius:22px;
+      border:1px solid rgba(255,255,255,.06);
+      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.018));
+      min-height:170px;
+      box-shadow:var(--shadow);
+    }
+    .decision .k{
+      font:11px "DM Mono",monospace;
+      letter-spacing:.08em;
+      color:var(--cyan);
+      text-transform:uppercase;
+    }
+    .decision h3{
+      margin-top:14px;
+      font-size:1.12rem;
+      line-height:1.28;
+    }
+    .decision p{
+      margin-top:10px;
+      color:#d4e0e6;
+      font-size:.96rem;
+      line-height:1.68;
+    }
+
+    footer{
+      border-top:1px solid rgba(255,255,255,.06);
+      color:var(--muted);
+      font-size:13px;
+      padding:18px 24px 44px;
+    }
+    .reveal{
+      opacity:0;
+      transform:translateY(26px);
+      transition:opacity .75s ease, transform .75s ease;
+    }
+    .reveal.in{opacity:1;transform:none}
+    .delay{transition-delay:.15s}
+
+    @media (max-width: 1120px){
+      .hero{grid-template-columns:1fr; padding-top:96px}
+      .hero-visual{order:-1; height:54vh; min-height:440px}
+      .signal-layout{grid-template-columns:1fr;gap:28px}
+      .pipeline{grid-template-columns:1fr}
+      .decision-grid{grid-template-columns:repeat(2,1fr)}
+      .feedback,.beam-stage,.cloud{
+        position:relative;top:auto;right:auto;left:auto;transform:none;
+        width:100%;max-width:none;margin-top:42px;
+      }
+      .chapter{min-height:auto}
+    }
+    @media (max-width: 720px){
+      .topbar-inner{padding:12px 16px}
+      nav{display:none}
+      .hero,.chapter,.convergence{padding-left:16px;padding-right:16px}
+      .hero h1{max-width:12ch}
+      .tag{display:none}
+      .decision-grid{grid-template-columns:1fr}
+      .feedback{height:min(78vw,360px)}
+      .node{width:94px;font-size:10px}
+      .n1{top:-18px}.n2{right:-18px}.n3{bottom:-18px}.n4{left:-18px}
+      .beam-stage{height:260px}
+      .cloud{height:380px}
+    }
   </style>
 </head>
 <body>
-  <div class="noise"></div>
-  <nav class="nav" id="nav"><a class="mark" href="index.html">VV<i>.</i></a><div class="nav-right"><a href="#method">Method</a><a href="#xcon">X-CON</a><a href="#prognosis">Prognosis</a><a class="back" href="index.html">← Portfolio</a></div></nav>
-  <main>
-    <header class="hero" id="top"><div class="grid-bg"></div><div class="orb"></div><div class="hero-inner reveal"><div class="eyebrow">Research method · Vivek Vishwakarma</div><h1>Damage begins<br>before it becomes <em>visible.</em></h1><p>Physics-informed research for listening to, recovering, and predicting hidden degradation in reinforced concrete exposed to coupled corrosion-fatigue.</p><div class="hero-actions"><a class="button primary" href="#method">Enter the method ↓</a><a class="button ghost" href="index.html#publications">View publications</a></div></div><div class="scroll-prompt">Scroll to trace the damage<span></span></div></header>
-
-
-    
-<section class="chapter problem" id="method" style="background:url('Coupled-degradation-illustration.png') center right / cover no-repeat; min-height: 100vh; position: relative; overflow: hidden;">
-  <div class="chapter-inner reveal" style="position: relative; z-index: 2; max-width: 760px; padding: 80px 0 0 60px;">
-    <div class="section-number">01 / The challenge</div>
-    <h2 class="title">Damage does not<br>act <span class="accent-rust">alone.</span></h2>
-    <p class="body-copy">A flexural crack opens a route for aggressive ions. Localized corrosion turns a small imperfection into a stress concentrator. Cyclic loading then activates it. The consequence is a feedback loop—not a sequence of separate damage events.</p>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <div class="brand-mark"></div>
+        <div>Research method narrative</div>
+      </div>
+      <nav>
+        <a href="#challenge">Challenge</a>
+        <a href="#xcon">X-CON</a>
+        <a href="#prognosis">Prognosis</a>
+      </nav>
+    </div>
   </div>
-</section>
 
+  <main class="page">
+    <section class="hero">
+      <div class="reveal in">
+        <div class="eyebrow">Corrosion-fatigue in reinforced concrete</div>
+        <h1>Damage begins local,<br>but its consequence becomes <span class="accent-rust">structural.</span></h1>
+        <p class="lede">
+          This work follows a single chain of evidence: coupled corrosion-fatigue initiates an evolving flaw,
+          fracture emits signals distorted by the submerged medium, recovery makes those signals interpretable,
+          and the reconstructed evidence is translated into crack geometry, stiffness implications, and remaining-life prognosis.
+        </p>
+        <div class="abstract">
+          <span class="chip"><b>01</b> Mechanism-first</span>
+          <span class="chip"><b>02</b> Physics-informed recovery</span>
+          <span class="chip"><b>03</b> Crack-state inference</span>
+        </div>
+      </div>
 
+      <div class="hero-visual reveal delay in">
+        <div class="orbit"></div>
+        <div class="core">
+          <div>
+            <h3>Coupled degradation<br>as a measurable process</h3>
+            <p>From pit formation to crack propagation, each stage modifies both the local stress field and the signal that reaches the sensor.</p>
+          </div>
+        </div>
+        <div class="tag t1"><b>Localized corrosion</b>Pit evolution creates a geometric discontinuity that intensifies local driving force.</div>
+        <div class="tag t2"><b>Fatigue activation</b>Cyclic loading converts a passive defect into an active crack-growth site.</div>
+        <div class="tag t3"><b>Signal distortion</b>Submerged propagation suppresses high-frequency evidence of tensile cracking.</div>
+        <div class="tag t4"><b>Recovered evidence</b>Physics-based inversion restores interpretable source characteristics.</div>
+      </div>
+    </section>
 
+    <section class="chapter challenge" id="challenge"><div class="challenge-hero reveal delay"><img src="Coupled-degradation-illustration.jpg" alt="Coupled degradation illustration in reinforced concrete" class="challenge-image"><div class="challenge-overlay"><div class="section-number">01 / The challenge</div><h2 class="title">Damage does not<br>act <span class="accent-rust">alone.</span></h2><p class="body-copy">A flexural crack opens a route for aggressive ions. Localized corrosion turns a small imperfection into a stress concentrator. Cyclic loading then activates it. The consequence is a feedback loop—not a sequence of separate damage events.</p></div></div></section>
 
-    
     <section class="chapter mechanics"><div class="chapter-inner reveal"><div class="section-number">02 / Coupled mechanics</div><h2 class="title">From an anodic flaw<br>to a structural <span class="accent-rust">forecast.</span></h2><p class="body-copy">The evolving pit-to-crack flaw is treated as a living state variable. Its geometry changes the local driving forces; those forces govern crack advance, reinforcement loss, bond deterioration, stiffness decay, and ultimately remaining life.</p></div><div class="beam-stage reveal delay"><span class="label l1">LOCAL FLAW EVOLUTION</span><div class="beam"><div class="crack"></div><div class="rebar"></div><div class="pit"></div></div><div class="stiffness"><svg viewBox="0 0 300 90" preserveAspectRatio="none"><path d="M0 13 C35 14,45 18,72 22 S122 25,148 38 S196 47,223 57 S272 72,300 85"/></svg></div><span class="label l2">GLOBAL STIFFNESS</span></div></section>
 
     <section class="chapter signal"><div class="chapter-inner signal-layout"><div class="reveal"><div class="section-number">03 / The sensing problem</div><h2 class="title">The environment changes the <span class="accent-rust">message.</span></h2><p class="body-copy">Acoustic emission carries evidence of active fracture. In submerged concrete, water-filled pores and fluid boundaries preferentially suppress the high-frequency content that identifies tensile cracking. A true fracture can arrive at the sensor looking like noise.</p></div><div class="reveal delay"><div class="spectrum"><div class="bars" id="bars"></div><div class="waterline"></div><span class="water-label">Saturated<br>propagation</span></div><div class="wave"><svg viewBox="0 0 600 80" preserveAspectRatio="none"><path d="M0 40 L18 38 L28 10 L38 70 L48 31 L58 45 L75 39 L88 37 L100 18 L112 61 L125 40 L145 39 L155 31 L166 50 L180 40 L205 39 L218 22 L230 56 L245 40 L270 40 L285 32 L295 49 L310 40 L600 40"/></svg></div></div></div></section>
@@ -68,15 +546,49 @@
 
     <section class="chapter geometry"><div class="chapter-inner reveal"><div class="section-number">05 / Damage geometry</div><h2 class="title">From pulses<br>to a <span class="accent-rust">crack.</span></h2><p class="body-copy">Probabilistic acoustic-emission classification separates highly probable tensile events from uncertainty. Their localized sequence is then converted into crack path, crack length, and three-dimensional damage geometry.</p></div><div class="cloud reveal delay" id="cloud"><div class="crackline"></div></div></section>
 
-    <section class="convergence" id="prognosis"><div class="chapter-inner reveal"><div class="section-number">06 / Towards prognosis</div><h2 class="title">From hidden damage<br>to defensible decisions.</h2><p class="body-copy">The aim is a continuous chain of evidence: understand the coupled mechanism, recover the signal, estimate the evolving crack state, and translate local damage into structural serviceability and remaining-life prognosis.</p><div class="loop"><div class="loop-center">PHYSICS-INFORMED<br>STRUCTURAL<br>PROGNOSIS</div><div class="loop-node a">Coupled<br>degradation</div><div class="loop-node b">Acoustic<br>evidence</div><div class="loop-node c">Life & stiffness<br>prediction</div><div class="loop-node d">Recovered crack<br>state</div></div><a class="footer-link" href="index.html#publications">Explore the publications →</a></div></section>
+    <section class="convergence" id="prognosis"><div class="chapter-inner reveal"><div class="section-number">06 / Towards prognosis</div><h2 class="title">From hidden damage<br>to defensible decisions.</h2><p class="body-copy">The aim is a continuous chain of evidence: understand the coupled mechanism, recover the signal, estimate the evolving crack state, and translate local damage into structural serviceability and remaining-life prognosis.</p><div class="decision-grid"><article class="decision"><div class="k">Mechanism</div><h3>Coupled deterioration state</h3><p>Crack opening, chloride ingress, corrosion, and fatigue are treated as mutually reinforcing—not isolated—events.</p></article><article class="decision"><div class="k">Measurement</div><h3>Recover submerged AE evidence</h3><p>Interpretation begins only after correcting the propagation-induced distortion imposed by the environment.</p></article><article class="decision"><div class="k">Inference</div><h3>Estimate evolving crack geometry</h3><p>Localized tensile-event patterns are converted into dimensions and topology of the active damage zone.</p></article><article class="decision"><div class="k">Decision</div><h3>Link local flaw to structural life</h3><p>The reconstructed damage state supports serviceability evaluation, stiffness implications, and remaining-life assessment.</p></article></div></div></section>
   </main>
+
+  <footer class="page">
+    Fracture mechanics, submerged acoustic emission, and physics-informed recovery in one continuous research narrative.
+  </footer>
+
   <script>
-    const bars=document.getElementById('bars');
-    Array.from({length:42},(_,i)=>{const b=document.createElement('span');b.className='bar';const peak=Math.exp(-Math.pow((i-14)/9,2));const base=18+Math.random()*14;b.style.height=(base+peak*70)+'%';bars.appendChild(b)});
-    const cloud=document.getElementById('cloud');
-    for(let i=0;i<110;i++){const d=document.createElement('i');d.className='dot';const t=i/109;const x=45+(t-.5)*27+(Math.random()-.5)*12;const y=82-t*65+(Math.random()-.5)*11;d.style.left=x+'%';d.style.top=y+'%';d.style.opacity=.25+Math.random()*.75;d.style.transform=`scale(${.45+Math.random()*1.4})`;cloud.appendChild(d)}
-    const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.16});document.querySelectorAll('.reveal,.mechanics').forEach(el=>observer.observe(el));
-    const nav=document.getElementById('nav');addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40),{passive:true});
+    const bars = document.getElementById('bars');
+    if (bars){
+      const heights = [92,88,84,80,74,69,66,61,55,52,48,44,40,37,34,31,28,26,23,21,19,17,15,14,13,12,11,10,9,8,8,7,7,6,6,5];
+      heights.forEach((h,i)=>{
+        const b=document.createElement('div');
+        b.className='bar'+(i<7?'':' low');
+        b.style.height=h+'%';
+        bars.appendChild(b);
+      });
+    }
+
+    const cloud = document.getElementById('cloud');
+    if (cloud){
+      const pts = [
+        [12,64,0],[18,58,0],[24,54,0],[29,50,1],[35,46,1],[41,43,1],[46,39,1],
+        [52,34,1],[58,30,1],[64,27,1],[70,24,1],[76,21,1],[82,18,1],
+        [30,64,0],[38,58,0],[47,54,0],[56,50,0],[66,46,0],[75,40,0],
+        [22,34,0],[28,28,0],[36,24,0],[44,22,0],[53,19,0],[62,16,0],[71,14,0]
+      ];
+      pts.forEach(([x,y,t])=>{
+        const p=document.createElement('div');
+        p.className='point'+(t?' tensile':'');
+        p.style.left=`calc(${x}% - 6px)`;
+        p.style.top=`calc(${y}% - 6px)`;
+        cloud.appendChild(p);
+      });
+    }
+
+    const observer = new IntersectionObserver(entries=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){e.target.classList.add('in')}
+      })
+    },{threshold:.15});
+
+    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
   </script>
 </body>
 </html>
