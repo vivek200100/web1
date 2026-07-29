@@ -1,14 +1,15 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="A physics-informed research journey from coupled corrosion-fatigue to acoustic emission signal recovery and structural prognosis." />
-  <title>Research Method | Vivek Vishwakarma</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="A physics-informed research journey from coupled corrosion-fatigue to acoustic emission signal recovery and structural prognosis." name="description"/>
+<title>Research Method | Vivek Vishwakarma</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&amp;family=Playfair+Display:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
     :root { --bg:#07111d; --bg2:#0b1928; --paper:#edf4f7; --muted:#94a9b8; --line:rgba(174,211,223,.16); --cyan:#54e6ee; --cyan2:#1aa8c2; --amber:#e89a38; --rust:#d9653b; --ink:#07111d; }
     * { box-sizing:border-box; }
     html { scroll-behavior:smooth; background:var(--bg); }
@@ -38,27 +39,73 @@
     .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease}.reveal.visible{opacity:1;transform:none}.delay{transition-delay:.16s}
     @media(max-width:800px){.nav-right a:not(.back){display:none}.chapter{min-height:auto;padding-block:130px}.feedback,.beam-stage,.cloud{position:relative;right:auto;top:auto;transform:none;margin:55px auto 5px;width:min(78vw,390px)}.problem .chapter-inner,.mechanics .chapter-inner,.geometry .chapter-inner{display:flex;flex-direction:column}.feedback{order:2}.beam-stage{order:2;height:250px}.cloud{order:2}.signal-layout{grid-template-columns:1fr;gap:40px}.pipeline{grid-template-columns:1fr}.step:after{right:auto;top:auto;left:50%;bottom:-14px;transform:rotate(135deg) translateY(-50%)}.loop{margin-top:75px}.loop-node{width:104px;font-size:10px}.b{right:-29px}.d{left:-29px}.nav{padding-inline:22px}}
     @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}.stiffness path{stroke-dashoffset:0}}
-  </style>
+  
+
+/* Updated challenge section */
+.problem{
+  min-height:100svh;
+  padding:0;
+  display:block;
+  background:#07111d;
+}
+.challenge-hero{
+  position:relative;
+  width:100%;
+  min-height:100svh;
+  overflow:hidden;
+}
+.challenge-hero img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  display:block;
+  background:#07111d;
+}
+.challenge-overlay{
+  position:absolute;
+  left:8%;
+  top:14%;
+  width:min(38%,560px);
+  z-index:5;
+}
+.challenge-overlay .section-number{margin-bottom:18px}
+.challenge-overlay .title{
+  font-size:clamp(54px,5vw,86px);
+  line-height:.95;
+  margin:0 0 28px;
+}
+.challenge-overlay .body-copy{
+  max-width:520px;
+  font-size:clamp(16px,1.2vw,20px);
+}
+@media(max-width:900px){
+ .challenge-overlay{
+   position:relative;
+   left:auto;top:auto;
+   width:auto;
+   padding:32px 24px;
+ }
+ .challenge-hero img{height:auto;}
+}
+</style>
 </head>
 <body>
-  <div class="noise"></div>
-  <nav class="nav" id="nav"><a class="mark" href="index.html">VV<i>.</i></a><div class="nav-right"><a href="#method">Method</a><a href="#xcon">X-CON</a><a href="#prognosis">Prognosis</a><a class="back" href="index.html">← Portfolio</a></div></nav>
-  <main>
-    <header class="hero" id="top"><div class="grid-bg"></div><div class="orb"></div><div class="hero-inner reveal"><div class="eyebrow">Research method · Vivek Vishwakarma</div><h1>Damage begins<br>before it becomes <em>visible.</em></h1><p>Physics-informed research for listening to, recovering, and predicting hidden degradation in reinforced concrete exposed to coupled corrosion-fatigue.</p><div class="hero-actions"><a class="button primary" href="#method">Enter the method ↓</a><a class="button ghost" href="index.html#publications">View publications</a></div></div><div class="scroll-prompt">Scroll to trace the damage<span></span></div></header>
-
-    <section class="chapter problem" id="method"><div class="chapter-inner reveal"><div class="section-number">01 / The challenge</div><h2 class="title">Damage does not<br>act <span class="accent-rust">alone.</span></h2><p class="body-copy">A flexural crack opens a route for aggressive ions. Localized corrosion turns a small imperfection into a stress concentrator. Cyclic loading then activates it. The consequence is a feedback loop—not a sequence of separate damage events.</p></div><div class="feedback reveal delay"><div class="feedback-center">COUPLED<br>DEGRADATION</div><div class="node n1">Crack<br>opening</div><div class="node n2">Ion<br>ingress</div><div class="node n3">Pit<br>growth</div><div class="node n4">Stress<br>amplification</div></div></section>
-
-    <section class="chapter mechanics"><div class="chapter-inner reveal"><div class="section-number">02 / Coupled mechanics</div><h2 class="title">From an anodic flaw<br>to a structural <span class="accent-rust">forecast.</span></h2><p class="body-copy">The evolving pit-to-crack flaw is treated as a living state variable. Its geometry changes the local driving forces; those forces govern crack advance, reinforcement loss, bond deterioration, stiffness decay, and ultimately remaining life.</p></div><div class="beam-stage reveal delay"><span class="label l1">LOCAL FLAW EVOLUTION</span><div class="beam"><div class="crack"></div><div class="rebar"></div><div class="pit"></div></div><div class="stiffness"><svg viewBox="0 0 300 90" preserveAspectRatio="none"><path d="M0 13 C35 14,45 18,72 22 S122 25,148 38 S196 47,223 57 S272 72,300 85"/></svg></div><span class="label l2">GLOBAL STIFFNESS</span></div></section>
-
-    <section class="chapter signal"><div class="chapter-inner signal-layout"><div class="reveal"><div class="section-number">03 / The sensing problem</div><h2 class="title">The environment changes the <span class="accent-rust">message.</span></h2><p class="body-copy">Acoustic emission carries evidence of active fracture. In submerged concrete, water-filled pores and fluid boundaries preferentially suppress the high-frequency content that identifies tensile cracking. A true fracture can arrive at the sensor looking like noise.</p></div><div class="reveal delay"><div class="spectrum"><div class="bars" id="bars"></div><div class="waterline"></div><span class="water-label">Saturated<br>propagation</span></div><div class="wave"><svg viewBox="0 0 600 80" preserveAspectRatio="none"><path d="M0 40 L18 38 L28 10 L38 70 L48 31 L58 45 L75 39 L88 37 L100 18 L112 61 L125 40 L145 39 L155 31 L166 50 L180 40 L205 39 L218 22 L230 56 L245 40 L270 40 L285 32 L295 49 L310 40 L600 40"/></svg></div></div></div></section>
-
-    <section class="chapter xcon" id="xcon"><div class="chapter-inner reveal"><div class="section-number">04 / X-CON</div><h2 class="title">Recover before<br>you <span class="accent-rust">classify.</span></h2><p class="body-copy">X-CON is a deterministic, physics-informed recovery and consensus framework. It first corrects distance- and frequency-dependent attenuation, then evaluates the reconstructed signal across independent temporal and spectral signatures.</p><div class="pipeline"><article class="step"><div class="step-kicker">01 / Locate & measure</div><h3>Distorted evidence</h3><p>Record the attenuated event and determine its propagation distance through the submerged concrete medium.</p><div class="mini-wave"></div></article><article class="step"><div class="step-kicker">02 / Invert physics</div><h3>Band-wise recovery</h3><p>Use calibrated transfer functions to restore an ambient-equivalent spectral signature without relying on an opaque classifier.</p><div class="mini-wave"></div></article><article class="step"><div class="step-kicker">03 / Cross-domain test</div><h3>Consensus, not guesswork</h3><p>Validate against spectral energy, waveform shape, and spectral topology. Two confirmations produce a verified event.</p><div class="consensus"><span class="vote on">✓</span><span class="vote on">✓</span><span class="vote">—</span></div></article></div></div></section>
-
-    <section class="chapter geometry"><div class="chapter-inner reveal"><div class="section-number">05 / Damage geometry</div><h2 class="title">From pulses<br>to a <span class="accent-rust">crack.</span></h2><p class="body-copy">Probabilistic acoustic-emission classification separates highly probable tensile events from uncertainty. Their localized sequence is then converted into crack path, crack length, and three-dimensional damage geometry.</p></div><div class="cloud reveal delay" id="cloud"><div class="crackline"></div></div></section>
-
-    <section class="convergence" id="prognosis"><div class="chapter-inner reveal"><div class="section-number">06 / Towards prognosis</div><h2 class="title">From hidden damage<br>to defensible decisions.</h2><p class="body-copy">The aim is a continuous chain of evidence: understand the coupled mechanism, recover the signal, estimate the evolving crack state, and translate local damage into structural serviceability and remaining-life prognosis.</p><div class="loop"><div class="loop-center">PHYSICS-INFORMED<br>STRUCTURAL<br>PROGNOSIS</div><div class="loop-node a">Coupled<br>degradation</div><div class="loop-node b">Acoustic<br>evidence</div><div class="loop-node c">Life & stiffness<br>prediction</div><div class="loop-node d">Recovered crack<br>state</div></div><a class="footer-link" href="index.html#publications">Explore the publications →</a></div></section>
-  </main>
-  <script>
+<div class="noise"></div>
+<nav class="nav" id="nav"><a class="mark" href="index.html">VV<i>.</i></a><div class="nav-right"><a href="#method">Method</a><a href="#xcon">X-CON</a><a href="#prognosis">Prognosis</a><a class="back" href="index.html">← Portfolio</a></div></nav>
+<main>
+<header class="hero" id="top"><div class="grid-bg"></div><div class="orb"></div><div class="hero-inner reveal"><div class="eyebrow">Research method · Vivek Vishwakarma</div><h1>Damage begins<br/>before it becomes <em>visible.</em></h1><p>Physics-informed research for listening to, recovering, and predicting hidden degradation in reinforced concrete exposed to coupled corrosion-fatigue.</p><div class="hero-actions"><a class="button primary" href="#method">Enter the method ↓</a><a class="button ghost" href="index.html#publications">View publications</a></div></div><div class="scroll-prompt">Scroll to trace the damage<span></span></div></header>
+<section class="chapter problem" id="method"><div class="challenge-hero"><img alt="Coupled degradation illustration" src="ChatGPT Image Jul 29, 2026, 12_37_42 PM.png"/><div class="challenge-overlay reveal visible">
+<div class="section-number">01 / The challenge</div>
+<h2 class="title">Damage does not<br/>act <span class="accent-rust">alone.</span></h2>
+<p class="body-copy">A flexural crack opens a route for aggressive ions. Localized corrosion turns a small imperfection into a stress concentrator. Cyclic loading then activates it. The consequence is a feedback loop—not a sequence of separate damage events.</p>
+</div></div></section>
+<section class="chapter mechanics"><div class="chapter-inner reveal"><div class="section-number">02 / Coupled mechanics</div><h2 class="title">From an anodic flaw<br/>to a structural <span class="accent-rust">forecast.</span></h2><p class="body-copy">The evolving pit-to-crack flaw is treated as a living state variable. Its geometry changes the local driving forces; those forces govern crack advance, reinforcement loss, bond deterioration, stiffness decay, and ultimately remaining life.</p></div><div class="beam-stage reveal delay"><span class="label l1">LOCAL FLAW EVOLUTION</span><div class="beam"><div class="crack"></div><div class="rebar"></div><div class="pit"></div></div><div class="stiffness"><svg preserveaspectratio="none" viewbox="0 0 300 90"><path d="M0 13 C35 14,45 18,72 22 S122 25,148 38 S196 47,223 57 S272 72,300 85"></path></svg></div><span class="label l2">GLOBAL STIFFNESS</span></div></section>
+<section class="chapter signal"><div class="chapter-inner signal-layout"><div class="reveal"><div class="section-number">03 / The sensing problem</div><h2 class="title">The environment changes the <span class="accent-rust">message.</span></h2><p class="body-copy">Acoustic emission carries evidence of active fracture. In submerged concrete, water-filled pores and fluid boundaries preferentially suppress the high-frequency content that identifies tensile cracking. A true fracture can arrive at the sensor looking like noise.</p></div><div class="reveal delay"><div class="spectrum"><div class="bars" id="bars"></div><div class="waterline"></div><span class="water-label">Saturated<br/>propagation</span></div><div class="wave"><svg preserveaspectratio="none" viewbox="0 0 600 80"><path d="M0 40 L18 38 L28 10 L38 70 L48 31 L58 45 L75 39 L88 37 L100 18 L112 61 L125 40 L145 39 L155 31 L166 50 L180 40 L205 39 L218 22 L230 56 L245 40 L270 40 L285 32 L295 49 L310 40 L600 40"></path></svg></div></div></div></section>
+<section class="chapter xcon" id="xcon"><div class="chapter-inner reveal"><div class="section-number">04 / X-CON</div><h2 class="title">Recover before<br/>you <span class="accent-rust">classify.</span></h2><p class="body-copy">X-CON is a deterministic, physics-informed recovery and consensus framework. It first corrects distance- and frequency-dependent attenuation, then evaluates the reconstructed signal across independent temporal and spectral signatures.</p><div class="pipeline"><article class="step"><div class="step-kicker">01 / Locate &amp; measure</div><h3>Distorted evidence</h3><p>Record the attenuated event and determine its propagation distance through the submerged concrete medium.</p><div class="mini-wave"></div></article><article class="step"><div class="step-kicker">02 / Invert physics</div><h3>Band-wise recovery</h3><p>Use calibrated transfer functions to restore an ambient-equivalent spectral signature without relying on an opaque classifier.</p><div class="mini-wave"></div></article><article class="step"><div class="step-kicker">03 / Cross-domain test</div><h3>Consensus, not guesswork</h3><p>Validate against spectral energy, waveform shape, and spectral topology. Two confirmations produce a verified event.</p><div class="consensus"><span class="vote on">✓</span><span class="vote on">✓</span><span class="vote">—</span></div></article></div></div></section>
+<section class="chapter geometry"><div class="chapter-inner reveal"><div class="section-number">05 / Damage geometry</div><h2 class="title">From pulses<br/>to a <span class="accent-rust">crack.</span></h2><p class="body-copy">Probabilistic acoustic-emission classification separates highly probable tensile events from uncertainty. Their localized sequence is then converted into crack path, crack length, and three-dimensional damage geometry.</p></div><div class="cloud reveal delay" id="cloud"><div class="crackline"></div></div></section>
+<section class="convergence" id="prognosis"><div class="chapter-inner reveal"><div class="section-number">06 / Towards prognosis</div><h2 class="title">From hidden damage<br/>to defensible decisions.</h2><p class="body-copy">The aim is a continuous chain of evidence: understand the coupled mechanism, recover the signal, estimate the evolving crack state, and translate local damage into structural serviceability and remaining-life prognosis.</p><div class="loop"><div class="loop-center">PHYSICS-INFORMED<br/>STRUCTURAL<br/>PROGNOSIS</div><div class="loop-node a">Coupled<br/>degradation</div><div class="loop-node b">Acoustic<br/>evidence</div><div class="loop-node c">Life &amp; stiffness<br/>prediction</div><div class="loop-node d">Recovered crack<br/>state</div></div><a class="footer-link" href="index.html#publications">Explore the publications →</a></div></section>
+</main>
+<script>
     const bars=document.getElementById('bars');
     Array.from({length:42},(_,i)=>{const b=document.createElement('span');b.className='bar';const peak=Math.exp(-Math.pow((i-14)/9,2));const base=18+Math.random()*14;b.style.height=(base+peak*70)+'%';bars.appendChild(b)});
     const cloud=document.getElementById('cloud');
