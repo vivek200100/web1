@@ -88,6 +88,55 @@
 }
 
 .mechanics{padding:0;display:block;background:#07111d}.mechanics-stack{display:flex;flex-direction:column}.mechanics-hero{position:relative;width:100%;min-height:100svh}.mechanics-hero img{width:100%;height:100%;display:block;object-fit:contain;background:#07111d}.mechanics-overlay{position:absolute;left:8%;top:14%;width:min(38%,560px);z-index:5}.mechanics-overlay .title{font-size:clamp(54px,5vw,86px);line-height:.95;margin:0 0 28px}.mechanics-overlay .body-copy{font-size:clamp(16px,1.2vw,20px);max-width:520px}@media(max-width:900px){.mechanics-overlay{position:relative;left:auto;top:auto;width:auto;padding:32px 24px}.mechanics-hero img{height:auto}}
+
+
+/* ---- Section 04 replacement (safe) ---- */
+.signal{
+  padding:0;
+  display:block;
+  background:#07111d;
+}
+.signal-hero{
+  position:relative;
+  width:100%;
+  min-height:100svh;
+  overflow:hidden;
+  background:#07111d;
+}
+.signal-hero img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:contain;
+  object-position:center;
+  background:#07111d;
+}
+.signal-overlay{
+  position:absolute;
+  left:8%;
+  top:14%;
+  width:min(38%,560px);
+  z-index:5;
+}
+.signal-overlay .title{
+  font-size:clamp(54px,5vw,86px);
+  line-height:.95;
+  margin:0 0 28px;
+}
+.signal-overlay .body-copy{
+  max-width:520px;
+  font-size:clamp(16px,1.2vw,20px);
+}
+@media(max-width:900px){
+ .signal-overlay{
+    position:relative;
+    left:auto;
+    top:auto;
+    width:auto;
+    padding:32px 24px;
+ }
+ .signal-hero img{height:auto;}
+}
 </style>
 </head>
 <body>
@@ -101,17 +150,25 @@
 <p class="body-copy">A flexural crack opens a route for aggressive ions. Localized corrosion turns a small imperfection into a stress concentrator. Cyclic loading then activates it. The consequence is a feedback loop—not a sequence of separate damage events.</p>
 </div></div></section>
 <section class="chapter mechanics"><div class="mechanics-stack"><div class="mechanics-hero"><img alt="Mechanics image 1" src="ChatGPT Image Jul 29, 2026, 03_47_44 PM.png"/><div class="mechanics-overlay reveal visible"><div class="section-number">02 / Coupled mechanics</div><h2 class="title">From an anodic flaw<br/>to a structural <span class="accent-rust">forecast.</span></h2><p class="body-copy">The evolving pit-to-crack flaw is treated as a living state variable. Its geometry changes the local driving forces; those forces govern crack advance, reinforcement loss, bond deterioration, stiffness decay, and ultimately remaining life.</p></div></div><div class="mechanics-hero"><img alt="Mechanics image 2" src="ChatGPT Image Jul 29, 2026, 03_40_10 PM.png"/></div></div></section>
-<section class="chapter geometry"><div class="geometry-wrap"><img src="ChatGPT Image Jul 29, 2026, 04_11_55 PM.png" alt="Damage geometry workflow" class="geometry-image"><div class="geometry-overlay"><div class="section-number">03 / Damage geometry</div><h2 class="title">From pulses<br/>to a <span class="accent-rust">crack.</span></h2><p class="body-copy">Probabilistic acoustic-emission classification separates highly probable tensile events from uncertainty. Their localized sequence is then converted into crack path, crack length, and three-dimensional damage geometry.</p></div></div></section>
-    
-    
-<section class="chapter signal"><div class="chapter-inner signal-layout"><div class="reveal"><div class="section-number">04 / The sensing problem</div><h2 class="title">The environment changes the <span class="accent-rust">message.</span></h2><p class="body-copy">Acoustic emission carries evidence of active fracture. In submerged concrete, water-filled pores and fluid boundaries preferentially suppress the high-frequency content that identifies tensile cracking. A true fracture can arrive at the sensor looking like noise.</p></div><div class="reveal delay"><div class="spectrum"><div class="bars" id="bars"></div><div class="waterline"></div><span class="water-label">Saturated<br/>propagation</span></div><div class="wave"><svg preserveaspectratio="none" viewbox="0 0 600 80"><path d="M0 40 L18 38 L28 10 L38 70 L48 31 L58 45 L75 39 L88 37 L100 18 L112 61 L125 40 L145 39 L155 31 L166 50 L180 40 L205 39 L218 22 L230 56 L245 40 L270 40 L285 32 L295 49 L310 40 L600 40"></path></svg></div></div></div></section>
+<section class="chapter geometry"><div class="geometry-wrap"><img alt="Damage geometry workflow" class="geometry-image" src="ChatGPT Image Jul 29, 2026, 04_11_55 PM.png"/><div class="geometry-overlay"><div class="section-number">03 / Damage geometry</div><h2 class="title">From pulses<br/>to a <span class="accent-rust">crack.</span></h2><p class="body-copy">Probabilistic acoustic-emission classification separates highly probable tensile events from uncertainty. Their localized sequence is then converted into crack path, crack length, and three-dimensional damage geometry.</p></div></div></section>
+<section class="chapter signal">
+<div class="signal-hero">
+<img alt="The sensing problem" src="Section 4(1).png"/>
+<div class="signal-overlay reveal visible">
+<div class="section-number">04 / The sensing problem</div>
+<h2 class="title">The environment changes the <span class="accent-rust">message.</span></h2>
+<p class="body-copy">Acoustic emission carries evidence of active fracture. In submerged concrete, water-filled pores and fluid boundaries preferentially suppress the high-frequency content that identifies tensile cracking. A true fracture can arrive at the sensor looking like noise.</p>
+</div>
+</div>
+</section>
 <section class="chapter xcon" id="xcon"><div class="chapter-inner reveal"><div class="section-number">05 / X-CON</div><h2 class="title">Recover before<br/>you <span class="accent-rust">classify.</span></h2><p class="body-copy">X-CON is a deterministic, physics-informed recovery and consensus framework. It first corrects distance- and frequency-dependent attenuation, then evaluates the reconstructed signal across independent temporal and spectral signatures.</p><div class="pipeline"><article class="step"><div class="step-kicker">01 / Locate &amp; measure</div><h3>Distorted evidence</h3><p>Record the attenuated event and determine its propagation distance through the submerged concrete medium.</p><div class="mini-wave"></div></article><article class="step"><div class="step-kicker">02 / Invert physics</div><h3>Band-wise recovery</h3><p>Use calibrated transfer functions to restore an ambient-equivalent spectral signature without relying on an opaque classifier.</p><div class="mini-wave"></div></article><article class="step"><div class="step-kicker">03 / Cross-domain test</div><h3>Consensus, not guesswork</h3><p>Validate against spectral energy, waveform shape, and spectral topology. Two confirmations produce a verified event.</p><div class="consensus"><span class="vote on">✓</span><span class="vote on">✓</span><span class="vote">—</span></div></article></div></div></section>
-
 <section class="convergence" id="prognosis"><div class="chapter-inner reveal"><div class="section-number">06 / Towards prognosis</div><h2 class="title">From hidden damage<br/>to defensible decisions.</h2><p class="body-copy">The aim is a continuous chain of evidence: understand the coupled mechanism, recover the signal, estimate the evolving crack state, and translate local damage into structural serviceability and remaining-life prognosis.</p><div class="loop"><div class="loop-center">PHYSICS-INFORMED<br/>STRUCTURAL<br/>PROGNOSIS</div><div class="loop-node a">Coupled<br/>degradation</div><div class="loop-node b">Acoustic<br/>evidence</div><div class="loop-node c">Life &amp; stiffness<br/>prediction</div><div class="loop-node d">Recovered crack<br/>state</div></div><a class="footer-link" href="index.html#publications">Explore the publications →</a></div></section>
 </main>
 <script>
     const bars=document.getElementById('bars');
-    Array.from({length:42},(_,i)=>{const b=document.createElement('span');b.className='bar';const peak=Math.exp(-Math.pow((i-14)/9,2));const base=18+Math.random()*14;b.style.height=(base+peak*70)+'%';bars.appendChild(b)});
+if(bars){
+Array.from({length:42},(_,i)=>{const b=document.createElement('span');b.className='bar';const peak=Math.exp(-Math.pow((i-14)/9,2));const base=18+Math.random()*14;b.style.height=(base+peak*70)+'%';bars.appendChild(b)});
+}
     const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.16});document.querySelectorAll('.reveal,.mechanics').forEach(el=>observer.observe(el));
     const nav=document.getElementById('nav');addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40),{passive:true});
   </script>
