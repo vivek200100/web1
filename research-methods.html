@@ -88,7 +88,9 @@
 }
 
 .mechanics{padding:0;display:block;background:#07111d}.mechanics-stack{display:flex;flex-direction:column}.mechanics-hero{position:relative;width:100%;min-height:100svh}.mechanics-hero img{width:100%;height:100%;display:block;object-fit:contain;background:#07111d}.mechanics-overlay{position:absolute;left:8%;top:14%;width:min(38%,560px);z-index:5}.mechanics-overlay .title{font-size:clamp(54px,5vw,86px);line-height:.95;margin:0 0 28px}.mechanics-overlay .body-copy{font-size:clamp(16px,1.2vw,20px);max-width:520px}@media(max-width:900px){.mechanics-overlay{position:relative;left:auto;top:auto;width:auto;padding:32px 24px}.mechanics-hero img{height:auto}}
-
+.chapter + .chapter{
+    margin-top: clamp(80px, 8vw, 140px);
+}
 
 /* Safe Section 04 */
 .signal{padding:0;display:block;background:#07111d}
